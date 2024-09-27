@@ -37,5 +37,9 @@ public class MyArrays{
     int[] ary2 = returnCopy(ary1);
     System.out.println("address of array1 is "+ary1+", address of array2 is "+ary2);
     System.out.println("array 1 returns "+aryToString(ary1)+", array 2 returns "+aryToString(ary2));
+    System.out.println("concatenating both arrays together returns "+aryToString(concatAry(ary1,ary2)));
+    int[] ary3 = new int[]{1, 2, 5, 8};
+    int[] ary4 = new int[]{9, 26, 6020, 5202, 19692};
+    System.out.println("concatenate arrays "+aryToString(ary3)+" and"+aryToString(ary4)+" returns "+aryToString(concatAry(ary3,ary4)));
   }
 }
