@@ -6,6 +6,8 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
     System.out.println(arrToString(arr2));
     System.out.println("big array sum is 42, function returns " + arr2DSum(arr2));
     System.out.println("swapped, the big array returns " + arrToString(swapRC(arr2)));
+    int[][] arr3 = {{1,2,3},{4,5,6}};
+    System.out.println("using the sample test case {{1,2,3},{4,5,6}}, it returns " + arrToString(swapRC(arr3)) + " when swapped");
   }
 
 //2. Copy your arrToString method from before.
@@ -60,10 +62,9 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
   * e.g. swapRC({{1,2,3},{4,5,6}}) returns {{1,4},{2,5},{3,6}}
   */
   public static int[][] swapRC(int[][]nums){
-    int[][]swap = new int[nums.length][];
+    int[][]swap = new int[nums[0].length][nums.length];
     for (int row = 0; row < nums.length; row++){
         for (int column = 0; column < nums[row].length; column++){
-            swap[row] = new int[nums[column].length];
             swap[row][column] = nums[column][row];
         }
     }
