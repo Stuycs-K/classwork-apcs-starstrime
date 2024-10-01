@@ -76,8 +76,18 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
   //-When the row number is the same as the column number replace
   //that negative with the value 1
   //-All other negatives replace with 0
-  public static void replaceNegative(int[][] vals){ }
-
+  public static void replaceNegative(int[][] vals){
+    for (int row =  0; row < vals.length; row++){
+      for (int column = 0; column < vals[row].length; column++){
+        if (vals[row][column] < 0){
+          if (row == column){
+            vals[row][column] = 1;
+          }
+          else vals[row][column] = 0;
+        }
+      }
+    }
+  }
   //4. Make a copy of the given 2d array.
   //When testing : make sure that changing the original does NOT change the copy.
   //DO NOT use any built in methods that "copy" an array.
