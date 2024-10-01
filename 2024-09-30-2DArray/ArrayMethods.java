@@ -5,6 +5,7 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
     int[][] arr2 = {{2,3,4}, {5,6,7}, {2,4,9}};
     System.out.println(arrToString(arr2));
     System.out.println("big array sum is 42, function returns " + arr2DSum(arr2));
+    System.out.println("swapped, the big array returns " + arrToString(swapRC(arr2)));
   }
 
 //2. Copy your arrToString method from before.
@@ -59,6 +60,12 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
   * e.g. swapRC({{1,2,3},{4,5,6}}) returns {{1,4},{2,5},{3,6}}
   */
   public static int[][] swapRC(int[][]nums){
-    return new int[1][1];
+    int[][]swap = new int[nums.length][];
+    for (int row = 0; row < nums.length; row++){
+        for (int column = 0; column < nums[row].length; column++){
+            swap[row][column] = nums[column][row];
+        }
+    }
+    return swap;
   }
 }
