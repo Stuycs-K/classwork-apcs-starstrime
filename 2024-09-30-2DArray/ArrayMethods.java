@@ -65,7 +65,7 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
     int[][]swap = new int[nums[0].length][nums.length];
     for (int row = 0; row < nums.length; row++){
         for (int column = 0; column < nums[row].length; column++){
-            swap[row][column] = nums[column][row];
+            swap[column][row] = nums[row][column];
         }
     }
     return swap;
