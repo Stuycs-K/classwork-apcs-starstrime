@@ -8,6 +8,8 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
     System.out.println("swapped, the big array returns " + arrToString(swapRC(arr2)));
     int[][] arr3 = {{1,2,3},{4,5,6}};
     System.out.println("using the sample test case {{1,2,3},{4,5,6}}, it returns " + arrToString(swapRC(arr3)) + " when swapped");
+    int[][] arr4 = {{-5, 6, 7},{2,-3,-592},{-15,25,0}};
+    System.out.println(arrToString(replaceNegative(arr4));
   }
 
 //2. Copy your arrToString method from before.
