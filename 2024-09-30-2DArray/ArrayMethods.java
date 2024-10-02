@@ -9,9 +9,12 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
     int[][] arr3 = {{1,2,3},{4,5,6}};
     System.out.println("using the sample test case {{1,2,3},{4,5,6}}, it returns " + arrToString(swapRC(arr3)) + " when swapped");
     int[][] arr4 = {{-5, 6, 7},{2,-3,-592},{-15,25,0}};
-    System.out.println(arrToString(arr4));
+    System.out.println("arr4 initialized as " + arrToString(arr4) + " with address" + arr4);
+    int[][] arr4copy = copy(arr4);
+    System.out.println("copy of arr4 made with value of " + arrToString(arr4copy) + " with address" + arr4copy);
     replaceNegative(arr4);
-    System.out.println(arrToString(arr4));
+    System.out.println("arr4 after function replaceNegative returns " + arrToString(arr4));
+    System.out.println("copy of arr4 after original was modified returns " + arrToString(arr4copy));
   }
 
 //2. Copy your arrToString method from before.
@@ -98,6 +101,13 @@ public class ArrayMethods{ // Angelo Chen, angeloc81@nycstudents.net, Ivan Chen,
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
   public static int[][] copy(int[][] nums){
-    return null;//placeholder so it compiles
-}
+    int[][] result = new int[nums.length][];
+    for (int row = 0; row < nums.length; row++){
+      result[row] = new int[nums[row].length];
+      for (int column = 0; column < nums[row].length; column++){
+        result[row][column] = nums[row][column];
+      }
+    }
+    return result;
+  }
 }
