@@ -9,6 +9,7 @@ public class ArrayDemo{
     System.out.println(Arrays.toString(arr1));
     System.out.println(arrToString(arr1));
     System.out.println("numbers of 0 in string, should return 5, returns " + countZeros2D(arr1));
+    System.out.println("sum should total 57, returns " + arr2DSum(arr1));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -56,7 +57,13 @@ public class ArrayDemo{
   /*Return the sum of all of the values in the 2D array
    *Use a nested loop instead of a helper method*/
   public static int arr2DSum(int[][]nums){
-    return 0;
+    int sum = 0;
+    for (int row = 0; row < nums.length; row++){
+      for (int column = 0; column < nums[row].length; column++){
+        sum += nums[row][column];
+      }
+    }
+    return sum;
   }
 
   //3. Modify a given 2D array of integer as follows:
