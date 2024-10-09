@@ -17,7 +17,10 @@ public class ArrayDemo{
     int[][] arr3 = {{5, 3, 4},{6, 9, 1}};
     System.out.println("arr3 created, consists of " + arrToString(arr3) + " with address " + arr3);
     int[][] arrcopy = copy(arr3);
-    System.out.println("copy of arr3 created with values of " + arrToString(arrcopy) + " with address " + arrcopy);
+    System.out.println("copy of arr3, has values " + arrToString(arrcopy) + " with address " + arrcopy);
+    arr3[0] = new int[]{0, 5, 2};
+    System.out.println("after arr3 is modified, the original has values of " + arrToString(arr3));
+    System.out.println("while the copy has values of " + arrToString(arrcopy));
     System.out.println("with rows and columns swapped, arr3 becomes " + arrToString(swapRC(arr3)));
   }
 
