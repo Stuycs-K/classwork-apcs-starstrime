@@ -84,19 +84,17 @@ public class ArrayDemo{
       for (int column = 0; column < vals[row].length; column++){
         if (vals[row][column] < 0){
           if (row == column){
-            vals[row][column] = 1;
+           vals[row][column] = 1;
           }
           else vals[row][column] = 0;
         }
-      }
-    }
+     }
+   }
   }
 
   //4. Make a copy of the given 2d array.
   //When testing : make sure that changing the original does NOT change the copy.
   //DO NOT use any built in methods that "copy" an array.
-  //You SHOULD write a helper method for this.
-  //If you don't see a good way to do that, you should stop and look at prior methods.
   public static int[][] copy(int[][] nums){
     int[][] result = new int[nums.length][];
     for (int row = 0; row < nums.length; row++){
@@ -114,9 +112,6 @@ public class ArrayDemo{
   public static int[][] swapRC(int[][]nums){
     int[][]swap = new int[nums[0].length][nums.length];
     for (int row = 0; row < nums.length; row++){
-        for (int column = 0; column < nums[row].length; column++){
-            swap[column][row] = nums[row][column];
-        }
     }
     return swap;
   }
