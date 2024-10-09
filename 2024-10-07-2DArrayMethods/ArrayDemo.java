@@ -18,6 +18,7 @@ public class ArrayDemo{
     System.out.println("arr3 created, consists of " + arrToString(arr3) + " with address " + arr3);
     int[][] arrcopy = copy(arr3);
     System.out.println("copy of arr3 created with values of " + arrToString(arrcopy) + " with address " + arrcopy);
+    System.out.println("with rows and columns swapped, arr3 becomes " + arrToString(swapRC(arr3)));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -112,6 +113,9 @@ public class ArrayDemo{
   public static int[][] swapRC(int[][]nums){
     int[][]swap = new int[nums[0].length][nums.length];
     for (int row = 0; row < nums.length; row++){
+        for (int column = 0; column < nums[row].length; column++){
+            swap[column][row] = nums[row][column];
+        }
     }
     return swap;
   }
