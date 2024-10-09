@@ -22,6 +22,7 @@ public class ArrayDemo{
     System.out.println("after arr3 is modified, the original has values of " + arrToString(arr3));
     System.out.println("while the copy has values of " + arrToString(arrcopy));
     System.out.println("with rows and columns swapped, arr3 becomes " + arrToString(swapRC(arr3)));
+    System.out.println("when turned into an htmltable, returns " + htmlTable(arr3));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -130,6 +131,16 @@ public class ArrayDemo{
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
   public static String htmlTable(int[][]nums){
-    return "";
+    String table = "<table>"; //
+    for (int row = 0; row < nums.length; row++){ // iterates through each row
+      table += "<tr>";  
+      for (int column = 0; column < nums[row].length; column++){ // iterates through every column in a given row
+        table += "<td>";  
+        table += nums[row][column];
+        table += "</td>";
+        }
+      table += "</tr>";
+    }
+    return table + "</table>";
   }
 }
