@@ -20,8 +20,8 @@ public class Demo{
     System.out.println( Point.distance(p1,p2));
     System.out.println( p1.distanceTo(p2));
     Point tri1 = new Point(0,0);
-    Point tri2 = new Point(6,0);
-    Point tri3 = new Point(3,Math.sqrt(27));
+    Point tri2 = new Point(1,0);
+    Point tri3 = new Point(0.5,Math.sqrt(0.75));
     System.out.println( tri1.distanceTo(tri2));
     System.out.println( tri1.distanceTo(tri3));
     System.out.println( tri2.distanceTo(tri3));
