@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class TriangleTester{
@@ -21,7 +22,9 @@ public class TriangleTester{
         if (triangleCheck(sideLengths)){
           count++;
         }
-        input.nextLine();
+        try {
+          input.nextLine();
+        } catch (NoSuchElementException e) {}
       }
       input.close();
 
@@ -44,7 +47,9 @@ public class TriangleTester{
           for (int x = 0; x < 3; x++){
             sideLengths[(i * 3) + x] = input.nextInt();
           }
-          input.nextLine();
+          try {
+            input.nextLine();
+          } catch (NoSuchElementException e) {}
         }
         for (int i = 0; i < 3; i++){
           if (triangleCheck(new int[]{sideLengths[i], sideLengths[i+3], sideLengths[i+6]})){
