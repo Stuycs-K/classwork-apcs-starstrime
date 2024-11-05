@@ -18,7 +18,7 @@ public class TriangleTester{
         for (int i = 0; i < 3 && input.hasNextInt(); i++){
           sideLengths[i] = input.nextInt();
         }
-        if ((sideLengths[0] < sideLengths[1] + sideLengths[2]) && (sideLengths[1] < sideLengths[0] + sideLengths[2]) && (sideLengths[2] < sideLengths[1] + sideLengths[0])){
+        if (triangleCheck(sideLengths)){
           count++;
         }
         input.nextLine();
@@ -42,11 +42,11 @@ public class TriangleTester{
         sideLengths = new int[9];
         for (int i = 0; i < 3; i++){
           for (int x = 0; x < 3; x++){
-            sideLengths[i] = input.nextInt();
+            sideLengths[(i * 3) + x] = input.nextInt();
           }
           input.nextLine();
         }
-        for (int i = 0; i != 3; i++){
+        for (int i = 0; i < 3; i++){
           if (triangleCheck(new int[]{sideLengths[i], sideLengths[i+3], sideLengths[i+6]})){
             count++;
           }
