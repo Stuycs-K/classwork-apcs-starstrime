@@ -1,7 +1,9 @@
 public class Driver {
     // the bird speak now uses the overridden getName, while the Animal speak is unaffected.
   
-    // Bird b2 = new Animal("Squaaaak", 4, "birdy"); does not work, because an Animal is not necessarily a bird. Bird, Y is a subclass of Animal,X, yet X is not always Y.
+    // Bird b2 = new Animal("Squaaaak", 4, "birdy"); does not work. The class Bird is an animal, as it extends it, but animal is not a bird, as animal does not extend bird.
+
+
     public static void main(String[] args) {
       Animal a = new Animal("meow", 3, "Mittens");
       a.speak();
