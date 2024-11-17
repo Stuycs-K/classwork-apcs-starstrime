@@ -6,8 +6,8 @@ public class ArrayListPractice{
     replaceEmpty(test);
     System.out.println(test);
     System.out.println(makeReversedList(test));
-
     System.out.println(mixLists(test,test));
+    System.out.println(mixLists(test,mixLists(test,test)));
   }
 
   public static ArrayList<String>createRandomArray(int size){
@@ -32,10 +32,9 @@ public class ArrayListPractice{
   public static ArrayList<String> makeReversedList( ArrayList<String> original){
     //return a new ArrayList that is in the reversed order of the original.
     ArrayList<String> out = new ArrayList<String>(original.size());
-    while (original.size() > 0){
-      out.add(original.get(original.size()-1));
-      original.remove(original.size()-1);
-     }
+    for(int i = original.size()-1; i >= 0; i--){
+      out.add(original.get(i));
+    }
     return out;
   }
 
@@ -49,14 +48,14 @@ public class ArrayListPractice{
       out.add(a.get(i));
       out.add(b.get(i));
     }
-    if (a.size() >= minLen){
+    if (a.size() > minLen){
       for (int i = minLen; i < a.size(); i++){
-        out.add(a.get(i))
+        out.add(a.get(i));
       }
     }
     else{
       for (int i = minLen; i < b.size(); i++){
-            out.add(b.get(i));
+        out.add(b.get(i));
       }
     }
     return out;
