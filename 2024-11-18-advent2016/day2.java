@@ -25,11 +25,31 @@ public class day2{
     int[][] code = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
     for (int indexA = 0; indexA < input.size(); indexA++){
       for (int indexB = 0; indexB < input.get(indexA).length(); indexB++){
-        if input.get(indexA).charAt(indexB).equals("U"){
-
+        if (input.get(indexA).charAt(indexB)=='U'){
+          coord[0]--;
+        }if (input.get(indexA).charAt(indexB)=='D'){
+          coord[0]++;
+        }if (input.get(indexA).charAt(indexB)=='L'){
+          coord[1]--;
+        }if (input.get(indexA).charAt(indexB)=='R'){
+          coord[1]++;
         }
+        returnBounds(coord);
       }
+      System.out.println(Arrays.toString(coord));
+      pass += code[coord[0]][coord[1]];
+      System.out.println(pass);
     }
     return pass;
+  }
+  public static void returnBounds(int[] coord){
+    for (int i = 0; i < coord.length; i++){
+      if (coord[i] < 0){
+        coord[i] = 0;
+      }
+      if (coord[i] > 2){
+        coord[i] = 2;
+      }
+    }
   }
 }
