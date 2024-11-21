@@ -3,13 +3,15 @@ import java.util.*;
 
 public class day4{
   public static void main(String[] args){
-    int output = 0;
+    String line;
     ArrayList<String> input = parse("inputD4.txt");
     while(input.size() > 0){
-      output += solveLine(input.get(0));
+      line = input.get(0);
+      if (solveLineReal(line)){
+        decipher(line);
+      }
       input.remove(0);
-    }
-    System.out.println(output);
+    } 
   }
 
   public static ArrayList<String> parse(String filename){ //code copied from day2
@@ -63,5 +65,45 @@ public class day4{
       }
     }
     return index;
+  }
+  public static boolean solveLineReal(String line){
+    String checksum = line.substring(line.length()-6, line.length()-1);
+    int value = Integer.parseInt(line.substring(line.length()-10,line.length()-7));
+    String[] letters = line.substring(0,line.length()-11).split("");
+    String[] alphabet = new String[]{"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+    int[] letterTracker = new int[26];
+    String checkTest = "";
+    char letter;
+    for (int i = 0; i < letters.length; i++){
+      letter = letters[i].charAt(0);
+      if (letter != '-'){
+        letterTracker[letter-97]++;
+      }
+    }
+    for (int i = 0; i < 5; i++){
+      checkTest += alphabet[maxValue(letterTracker)];
+      letterTracker[maxValue(letterTracker)] = 0;
+    }
+    return (checkTest.equals(checksum));
+  }
+  public static void decipher(String input){
+    String[] alphabet = new String[]{"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+    char letter;
+    String realLetter;
+    int value = Integer.parseInt(input.substring(input.length()-10,input.length()-7));
+    input = input.substring(0,input.length()-11);
+    String output = "";
+    int shift = (value % 26);
+    //System.out.println(input + " " + value + " " + shift);
+    for (int i = 0; i < input.length(); i++){
+      letter = input.charAt(i);
+      if (letter == '-'){
+        output += " ";
+      }else if (letter-(97-shift) >= 26){
+        output += alphabet[letter-(97-shift)-26];
+      }else output += alphabet[letter-(97-shift)];
+      //System.out.println(output);
+    }
+    System.out.println(output + value);
   }
 }
