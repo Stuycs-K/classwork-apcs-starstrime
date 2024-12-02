@@ -2,8 +2,9 @@ import java.util.*;
 import java.io.*;
 public class day1{
   public static void main(String[] args){
-    System.out.println(solveP1(separate(parse("d1input.txt"))));
-    
+    int[][] inputD1 = separate(parse("d1input.txt"));
+    // System.out.println(solveP1(inputD1));
+    System.out.println(solveP2(inputD1));
   }
   public static int[][] separate(ArrayList<String> input){
     int[][] output = new int[2][input.size()];
@@ -36,6 +37,21 @@ public class day1{
     int ans = 0;
     for (int i = 0; i < input[0].length; i++){
       ans += Math.abs(input[0][i] - input[1][i]);
+    }
+    return ans;
+  }
+  public static int solveP2(int[][] input){
+    int ans = 0;
+    int compareVal;
+    int[] values = input[0];
+    int[] simList = input[1];
+    for (int i = 0; i < input[0].length; i++){
+      compareVal = values[i];
+      for (int index = 0; index < simList.length; index++){
+        if (simList[index] == compareVal){
+          ans += compareVal;
+        }
+      }
     }
     return ans;
   }
