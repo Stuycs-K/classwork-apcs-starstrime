@@ -13,9 +13,18 @@ public class day3{
     int sum = 0;
     int temp1;
     boolean skip;
+    boolean dont = true;
     String val = "";
-    for (int i = 0; i < input.length()-4; i++){
-      if (input.substring(i,i+4).equals("mul(")){
+    for (int i = 0; i < input.length()-7; i++){
+      if (input.substring(i,i+4).equals("do()")){
+        dont = true;
+        i+=4;
+      }
+      if (input.substring(i,i+7).equals("don't()")){
+        dont = false;
+        i+=7;
+      }
+      if (dont && input.substring(i,i+4).equals("mul(")){
         skip = true;
         //System.out.println("detected");
         i+=4;
