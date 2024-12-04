@@ -2,7 +2,9 @@ import java.util.*;
 import java.io.*;
 public class day4{
   public static void main(String[] args) {
-    System.out.println(seek(day1.parse("d4input.txt")));
+    ArrayList<String> input = day1.parse("d4input.txt");
+    // System.out.println(seek(input));
+    System.out.println(crossSeek(input));
   }
   public static int seek(ArrayList<String> input){
     int count = 0;
@@ -107,5 +109,32 @@ public class day4{
       fin.add(0, input.get(col-i).charAt(row-r));
     }
     System.out.println(fin + " " + row + " " + col + " " + finR + " " + finC);
+  }
+  public static int crossSeek(ArrayList<String> input){
+    int count = 0;
+    boolean flag = true;
+    for (int col = 0; col < input.size(); col++){
+      for (int row = 0; row < input.get(0).length(); row++){
+        if (input.get(col).charAt(row) == 'A'){
+          if(boundsTest(input, col, row, 1, 1) && boundsTest(input, col, row, -1, -1) && input.get(col-1).charAt(row-1) != input.get(col+1).charAt(row+1)){ // checks bounds, then ensures that diagonals are not the same
+            flag = true;
+            for (int i = -1; i < 2; i+=2){
+              for (int r = -1; r < 2; r+=2){
+                if (input.get(col-i).charAt(row-r) == 'X' || input.get(col-i).charAt(row-r) == 'A'){
+                  flag = false;
+                }
+              }
+            }
+            if (flag && input.get(col-1).charAt(row-1) == input.get(col-1).charAt(row+1) && input.get(col+1).charAt(row-1) == input.get(col+1).charAt(row+1)){ //separate rows
+              count++;
+            }else if (flag && input.get(col-1).charAt(row-1) == input.get(col+1).charAt(row-1) && input.get(col-1).charAt(row+1) == input.get(col+1).charAt(row+1)){
+              count++;
+            }
+          }
+        }
+      }
+      System.out.println(col+1 + " row complete");
+    }
+    return count;
   }
 }
