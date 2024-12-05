@@ -13,7 +13,7 @@ public class Driver{
     for (int col = 0; col < 32; col++){
       for (int row = 0; row < 84; row++){
         if (row <= 1 || col == 0 || row >= 82 || col == 31){
-          Text.color(Text.BLUE, Text.background(Text.ORANGE), 1, 7);
+          Text.color(Text.BLUE, 1, 7);
         }else{
           System.out.print(Text.RESET);
         }
