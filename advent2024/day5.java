@@ -4,7 +4,7 @@ public class day5{
   public static void main(String[] args) {
     int[][] rules = rulesSplit(day1.parse("d5inputp1.txt"));
     int[][] lists = listSplit(day1.parse("d5inputp2.txt"));
-    System.out.println(check(rules, lists));
+    System.out.println(checkpt2(rules, lists));
   }
   public static int[][] rulesSplit(ArrayList<String> input){
     int[][] list = new int[input.size()][];
@@ -35,20 +35,41 @@ public class day5{
   public static int check(int[][] rules, int[][] lists){
     int sum = 0;
     int mid;
-    boolean confirmFlag;
     for (int i = 0; i < lists.length; i++){
-      confirmFlag = true;
       mid = lists[i][lists[i].length/2];
-      for (int e1 = 0; e1 < lists[i].length; e1++){
-        for (int e2 = e1; e2 < lists[i].length; e2++){
-          if (!confirm(rules, lists[i][e1], lists[i][e2])){
-            confirmFlag = false;
-          }
-        }
-      }
-      if (confirmFlag){
+      if (checkList(rules, lists[i])){
         sum += mid;
       }
+    }
+    return sum;
+  }
+  public static boolean checkList(int[][] rules, int[] list){
+    for (int e1 = 0; e1 < list.length; e1++){
+      for (int e2 = e1; e2 < list.length; e2++){
+        if (!confirm(rules, list[e1], list[e2])){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  public static int checkpt2(int[][] rules, int[][] lists){
+    int sum = 0;
+    int mid = 0;
+    int swap;
+    for (int i = 0; i < lists.length; i++){
+      while (!checkList(rules, lists[i])){
+        for (int s = 0; s < lists[i].length-1; s++){
+          if (!confirm(rules, lists[i][s], lists[i][s+1])){
+            swap = lists[i][s];
+            lists[i][s] = lists[i][s+1];
+            lists[i][s+1] = swap;
+          }
+        }
+        mid = lists[i][lists[i].length/2];
+      }
+      sum += mid;
+      mid = 0;
     }
     return sum;
   }
