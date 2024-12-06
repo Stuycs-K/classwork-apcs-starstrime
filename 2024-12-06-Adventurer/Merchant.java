@@ -41,7 +41,11 @@ public class Merchant extends Adventurer{
     return "";
   }
   public String specialAttack(Adventurer other){
-    return "";
+    if (coins >= 500){
+      other.applyDamage((coins / 500) * 5);
+      restoreSpecial(-((coins / 500) * 500));
+      return("Dealt damage to " + other.getName() + "! Their health is now " + other.getHP() + "/" + other.getmaxHP() + ". You now have " + getSpecial() + " coins.");
+    }else return ("You do not have enough coins for a special attack.");
   }
 
 }
