@@ -20,22 +20,33 @@ public class day8{
   public static int nodeCount(String[][] map, int[] point, ArrayList<String> nodes){
     int total = 0;
     int[] move, coord, finalCoord;
-    String nodeString;
+    String nodeString = "";
     for (int row = 0; row < map.length; row++){
       for (int col = 0; col < map[0].length; col++){
         coord = new int[]{row, col};
         if (map[row][col].equals(map[point[0]][point[1]])){
           move = new int[]{row - point[0], col - point[1]};
-          finalCoord = new int[]{row + move[0], col + move[1]};
-          nodeString = Arrays.toString(finalCoord);
-          if (!(row == (point[0]) && col == point[1]) && nodes.indexOf(nodeString) == -1 && day6.boundsCheck(map, coord, move)){
-            total++;
-            nodes.add(nodeString);
+          if (!(row == (point[0]) && col == point[1])){
+            if (nodes.indexOf(Arrays.toString(point)) == -1){
+              total++;
+              nodes.add(Arrays.toString(point));
+            }
+            while (day6.boundsCheck(map, coord, move)){
+              finalCoord = new int[]{coord[0] + move[0], coord[1] + move[1]};
+              nodeString = Arrays.toString(finalCoord);
+              if (nodes.indexOf(nodeString) == -1){
+                total++;
+                nodes.add(nodeString);
+              }
+              coord[0] = finalCoord[0];
+              coord[1] = finalCoord[1];
+              // System.out.println(Arrays.toString(point) + Arrays.toString(coord) + Arrays.toString(move) + nodeString + nodes + " " );
+            }
           }
-          // System.out.println(Arrays.toString(point) + Arrays.toString(coord) + Arrays.toString(move) + nodeString + nodes + " " );
         }
       }
     }
+    // System.out.println(nodes);
     return total;
   }
 }
