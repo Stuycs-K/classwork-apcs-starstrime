@@ -10,12 +10,21 @@ public class Game{
     while (userInput.hasNextLine()){
       input = userInput.nextLine();
       if (input.equals("a") || input.equals("attack")){
-        player.attack(enemy);
+        System.out.println(player.attack(enemy));
+      }
+      else if (input.equals("sp") || input.equals("special")){
+        System.out.println(player.specialAttack(enemy));
+      }
+      else if (input.equals("su") || input.equals("support")){
+        System.out.println(player.support());
+      }
+      else if (input.equals("quit")){
+        break;
       }
       else{
         System.out.println("Invalid input! Please try again.");
       }
-      menu(player, enemy);
+      menu(player,enemy);
     }
   }
   public static void menu(Adventurer player, Adventurer enemy){
