@@ -3,7 +3,7 @@ public class Merchant extends Adventurer{
   private int coins, maxCoins;
 
   public Merchant(String name){
-    super(name);
+    super(name, 15);
     coins = 300;
     maxCoins = 99999;
   }
