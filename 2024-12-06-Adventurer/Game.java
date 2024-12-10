@@ -11,14 +11,18 @@ public class Game{
       input = userInput.nextLine();
       if (input.equals("a") || input.equals("attack")){
         System.out.println(player.attack(enemy));
+        randAct(enemy, player);
       }
       else if (input.equals("sp") || input.equals("special")){
         System.out.println(player.specialAttack(enemy));
+        randAct(enemy, player);
       }
       else if (input.equals("su") || input.equals("support")){
         System.out.println(player.support());
+        randAct(enemy, player);
       }
       else if (input.equals("quit")){
+        System.out.println("system quit.");
         break;
       }
       else{
@@ -30,8 +34,21 @@ public class Game{
   public static void menu(Adventurer player, Adventurer enemy){
     System.out.println();
     System.out.println("What will you do? ");
-    System.out.println(player+" "+player.getHP()+"/"+player.getmaxHP()+"  "+player.getSpecial()+" "+player.getSpecialName());
-    System.out.println(enemy+" "+enemy.getHP()+"/"+enemy.getmaxHP()+"  "+enemy.getSpecial()+" "+enemy.getSpecialName());
+    System.out.println(player+"  "+player.getHP()+" / "+player.getmaxHP()+" HP "+player.getSpecial()+" "+player.getSpecialName());
+    System.out.println(enemy+"  "+enemy.getHP()+" / "+enemy.getmaxHP()+" HP "+enemy.getSpecial()+" "+enemy.getSpecialName());
     System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / quit");
+  }
+  public static void randAct(Adventurer enemy, Adventurer player){
+    System.out.println();
+    int check = (int)(Math.random() * 3);
+    if (check == 0){
+      System.out.println(enemy.attack(player));
+    }
+    if (check == 1){
+      System.out.println(enemy.specialAttack(player));
+    }
+    else {
+      System.out.println(enemy.support());
+    }
   }
 }
