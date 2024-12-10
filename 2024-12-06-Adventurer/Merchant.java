@@ -4,12 +4,12 @@ public class Merchant extends Adventurer{
 
   public Merchant(String name){
     super(name, 15);
-    coins = 300;
+    coins = 500;
     maxCoins = 99999;
   }
   public Merchant(String name, int hp){
     super(name, hp);
-    coins = 300;
+    coins = 500;
     maxCoins = 99999;
   }
   public Merchant(String name, int hp, int coins){
@@ -32,20 +32,26 @@ public class Merchant extends Adventurer{
   }
   public String attack(Adventurer other){
     other.applyDamage(3);
-    return ("Dealt 3 damage to " + other.getName() + "! Their health is now " + other.getHP() + "/" + other.getmaxHP());
+    int gained = ((int)(Math.random() * 100) + (int)(Math.random() * 100) + 200);
+    restoreSpecial(gained);
+    return (this + "dealt 3 damage to " + other.getName() + "! Their health is now " + other.getHP() + "/" + other.getmaxHP() + ". " + this + " also hit " + gained + " coins out of " + other + "!");
   }
   public String support(Adventurer other){
     return "";
   }
   public String support(){
-    return "";
+    int gained = ((int)(Math.random()*200) + (int)(Math.random()*200) + 400);
+    setHP(getHP() + 3);
+    restoreSpecial(gained);
+    return (this + "found " + gained + " coins on the floor! They also healed for 3 HP!");
   }
   public String specialAttack(Adventurer other){
     if (coins >= 500){
-      other.applyDamage((coins / 500) * 5);
+      int damage = (coins / 500) * 5;
+      other.applyDamage(damage);
       restoreSpecial(-((coins / 500) * 500));
-      return("Dealt damage to " + other.getName() + "! Their health is now " + other.getHP() + "/" + other.getmaxHP() + ". You now have " + getSpecial() + " coins.");
-    }else return ("You do not have enough coins for a special attack.");
+      return(this + " toseed a bag of money at " + other + ", dealing " + damage + " damage to " + other.getName() + "!");// Their health is now " + other.getHP() + "/" + other.getmaxHP() + ". You now have " + getSpecial() + " coins.");
+    }else return ("You do not have enough coins for a special attack. Instead, " + attack(other));
   }
 
 }
