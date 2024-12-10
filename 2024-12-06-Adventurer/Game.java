@@ -11,15 +11,33 @@ public class Game{
       input = userInput.nextLine();
       if (input.equals("a") || input.equals("attack")){
         System.out.println(player.attack(enemy));
+        if (check(enemy,player)){
+          break;
+        }
         randAct(enemy, player);
+        if (check(player,enemy)){
+          break;
+        }
       }
       else if (input.equals("sp") || input.equals("special")){
         System.out.println(player.specialAttack(enemy));
+        if (check(enemy,player)){
+          break;
+        }
         randAct(enemy, player);
+        if (check(player,enemy)){
+          break;
+        }
       }
       else if (input.equals("su") || input.equals("support")){
         System.out.println(player.support());
+        if (check(enemy,player)){
+          break;
+        }
         randAct(enemy, player);
+        if (check(player,enemy)){
+          break;
+        }
       }
       else if (input.equals("quit")){
         System.out.println("system quit.");
@@ -50,5 +68,12 @@ public class Game{
     else {
       System.out.println(enemy.support());
     }
+  }
+  public static boolean check(Adventurer player, Adventurer other){
+    if (player.getHP() <= 0){
+      System.out.println(player + " has fallen. " + other + " wins the battle with " + other.getHP() + " health remaining, doing " + (-1 * player.getHP()) + " unnecessary damage!");
+      return true;
+    }
+    return false;
   }
 }
